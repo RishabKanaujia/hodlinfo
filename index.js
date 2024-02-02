@@ -9,6 +9,13 @@ dotenv.config()
 const app = express()
 const port = 3000
 app.use(express.json())
+app.use((req, res, next) => {
+  // Set headers to allow requests from any origin
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  next();
+});
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename);
