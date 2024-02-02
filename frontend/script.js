@@ -5,7 +5,7 @@ const listContainer = document.querySelector('#bodytable')
 
 let list = []
 async function loadTable() {
-    const result = await axios.get(`https://hodlinfo-three.vercel.app/crypto`)
+    const result = await axios.get(`/crypto`)
     list = result.data
     
     list.forEach(function (row, index) {
@@ -36,7 +36,7 @@ function startReverseTimer(seconds) {
             seconds = 60;
             listContainer.innerHTML = ""
             loadTable()
-            axios.post(`https://hodlinfo-three.vercel.app/cryptodb`)
+            axios.post(`/cryptodb`)
         }
         setTimeout(updateTimer, 1000); 
         drawCircularProgressBar(seconds / 60)
