@@ -1,10 +1,11 @@
 const listContainer = document.querySelector('#bodytable')
-
+// const url = process.env.DOMAIN
+// console.log(url)
 
 
 let list = []
 async function loadTable() {
-    const result = await axios.get('http://localhost:3000/crypto')
+    const result = await axios.get(`https://hodlinfo-three.vercel.app/crypto`)
     list = result.data
     
     list.forEach(function (row, index) {
@@ -35,7 +36,7 @@ function startReverseTimer(seconds) {
             seconds = 60;
             listContainer.innerHTML = ""
             loadTable()
-            axios.post('http://localhost:3000/cryptodb')
+            axios.post(`https://hodlinfo-three.vercel.app/cryptodb`)
         }
         setTimeout(updateTimer, 1000); 
         drawCircularProgressBar(seconds / 60)
