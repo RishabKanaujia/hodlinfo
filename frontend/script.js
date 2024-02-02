@@ -1,13 +1,12 @@
 const listContainer = document.querySelector('#bodytable')
-// const url = process.env.DOMAIN
-// console.log(url)
+
 
 
 let list = []
 async function loadTable() {
     const result = await axios.get(`/crypto`)
     list = result.data
-    
+    console.log(result)
     list.forEach(function (row, index) {
         const tr = document.createElement("tr")
         tr.innerHTML = `
